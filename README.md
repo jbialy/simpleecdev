@@ -8,4 +8,4 @@ Includes:
 * Portainer (https://portainer.io)
 
 # Usage
-Clonse the repo and run "docker-compose up -d". Services will be available on localhost:8080, localhost:3306 and localhost:9000.
+Clone the repo and run "docker-compose up -d". Services will be available on localhost:8080, localhost:3306 and localhost:9000.
