@@ -10,7 +10,7 @@ services:
         volumes:
             - mysql-data:/var/lib/mysql
         command: ["mysqld", "--innodb-buffer-pool-size=512M", "--key-buffer-size=64M", "--query-cache-size=64M", "--tmp-table-size=32M", "--sort-buffer-size=2M", "--query-cache-type=ON"]
-        restart: always
+        restart: unless-stopped
 
     portainer:
         image: portainer/portainer
@@ -19,7 +19,7 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - portainer:/data
-        restart: always
+        restart: unless-stopped
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
@@ -29,7 +29,7 @@ services:
             - PMA_HOST=mysql
         depends_on:
             - mysql
-        restart: always
+        restart: unless-stopped
 
     elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
@@ -42,7 +42,7 @@ services:
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         volumes:
             - esdata:/usr/share/elasticsearch/data
-        restart: always
+        restart: unless-stopped
 
 volumes:
     mysql-data:
